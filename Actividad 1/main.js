@@ -7,20 +7,22 @@ const baseDeDatosCloud = [
 
 const cargarServicios = () => {
 
-    // Limpiar el contenedor antes de cargar nuevamente
-    const contenedor = document.getElementById("contenedor-servicios");
-    contenedor.innerHTML = "";
 
-    // Recorrer el arreglo de servicios
+    const contenedor = document.getElementById("contenedor-servicios")
+    // Limpiar el contenedor antes de cargar nuevamente
+    contenedor.innerHTML = "";
+    
     baseDeDatosCloud.forEach(servicio => {
 
-        // Reto lógico: decidir la clase según el estado
+        // Reto lógico
         let claseEstado = "";
+
         if (servicio.estado === "Activo") {
             claseEstado = "activo";
         } else {
             claseEstado = "inactivo";
         }
+
 
         // Crear la tarjeta usando Template Strings
         const tarjetaHTML = `
