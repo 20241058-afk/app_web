@@ -1,0 +1,141 @@
+:root {
+    --primary-color: #6366f1; /* Indigo moderno */
+    --primary-hover: #4f46e5;
+    --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    --text-main: #1e293b;
+    --card-bg: #ffffff;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    margin: 0;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+nav {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+.tarjeta-producto{
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    max-width: 300px;
+    display: inline-block;
+    vertical-align: top;
+}
+.tarjeta-producto:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #2a2a2a;
+    transform: translate(-5px);
+}
+.tarjeta-producto .title{
+    color: #e67e22;
+}
+#contenedor-productos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px ;
+}
+
+/* ===== VISTA DE PRODUCTO A PANTALLA COMPLETA ===== */
+
+.producto-completo {
+    display: flex;
+    gap: 40px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.producto-completo .imagen {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.producto-completo .imagen img {
+    max-width: 100%;
+    max-height: 450px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.producto-completo .info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.producto-completo .info h1 {
+    text-align: left;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.producto-completo .descripcion {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #475569;
+}
+
+.producto-completo .precio {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.producto-completo .datos p {
+    margin: 6px 0;
+    font-size: 1rem;
+}
+
+.producto-completo button {
+    margin-top: auto;
+    align-self: flex-start;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.producto-completo button:hover {
+    background-color: var(--primary-hover);
+}
