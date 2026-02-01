@@ -64,6 +64,38 @@ nav a {
     gap: 20px;
     padding: 20px ;
 }
+/* Botón ver detalle */
+.btn-detalle {
+    margin-top: 10px;
+    align-self: flex-start; /* lo alinea bien dentro de la tarjeta */
+
+    background-color: #2d936c; /* verde que ya usas */
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: background-color 0.3s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+/* Hover */
+.btn-detalle:hover {
+    background-color: #1e6f50; /* un poco mas oscuro */
+    transform: translateY(-2px); /* sube tantito */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Click */
+.btn-detalle:active {
+    transform: scale(0.95);
+}
+
 
 /* ===== VISTA DE PRODUCTO A PANTALLA COMPLETA ===== */
 
