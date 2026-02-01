@@ -25,7 +25,7 @@ const mostrarProductos=(productos)=>{
             <h3 class="title">${producto.title}</h3>
             <img src="${producto.thumbnail}" alt="${producto.title}">
             <p><strong>Precio: </strong> $${producto.price}</p>
-            <p><strong>Rating: </strong> ${producto.rating}</p>
+            <p><strong>Rating: </strong>     ${producto.rating}</p>
             <p><strong>Categoria: </strong> ${producto.category}</p>
             <button class="btn-detalle">Detalles</button>
         `;
@@ -33,10 +33,37 @@ const mostrarProductos=(productos)=>{
 
         tarjeta.querySelector(".btn-detalle")
                 .addEventListener("click", () => {
-                    window.location.href = `../Dummyjson/producto.html?id=${producto.id}`;
+                    
+                // Guardamos el ID del producto en localStorage
+                localStorage.setItem("productoId", producto.id);
+
+                // Redirigimos a la página de detalle SIN mostrar el ID en la URL
+                window.location.href = "../Dummyjson/producto.html";
                 });
 
             contenedor.appendChild(tarjeta);
         });
 
 }
+
+const buscarProducto = () => {
+
+    const productoBuscado = document.getElementById("producto-buscado").value;
+    fetch(`https://dummyjson.com/products/search?q=${productoBuscado}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log("Resultados de búsqueda:", data);
+            mostrarProductos(data.products);
+        });
+       
+}
+// Este bloque controla el envío del formulario
+const Busqueda = document.querySelector(".barra_busqueda");
+
+Busqueda.addEventListener("submit", (event) => {
+    // Evita que la página se refresque y aparezca el color azul
+    event.preventDefault(); 
+    
+    // Ejecuta tu función de búsqueda
+    buscarProducto(); 
+});
