@@ -30,7 +30,6 @@ if(navigator.geolocation){
 
             polygon.bindPopup("pertimetro de mi casa exacto").openPopup();
             //alert(lat+" , "+lon)
-x
         },
         ()=>{}
 

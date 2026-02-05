@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../Dummyjson/style.css">
+</head>
+<body>
+    <h1>Alta de nuevos productos</h1>
+
+    <div class="form-group">
+        <label>Nombre del producto:</label>
+        <input type="text" id="titulo" placeholder="Nombre del prodyucto...">
+        
+    </div class="form-group">
+    <div>
+        <label>Precio :</label>
+        <input type="text" id="precio" placeholder="$">
+    </div>
+    <div class="form-group">
+        <label>Categoría:</label>
+        <!--hacer dinamico el select-->
+        <select id="categoria">
+            <option value="smartphone">smartphone</option>
+            <option value="laptops">laptops</option>
+            <option value="fraganses">fraganses</option>
+            <option value="skincare">skincare</option>
+            <option value="groceries">groceries</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label>descripcion:</label>
+       <textarea name="descripcion" rows="4" id="descripcion" placeholder="descripcion del producto"></textarea>
+    </div>
+    <button class="btn-back" onclick="window.location.href='../'">come back</button>
+    <button class="btn-back" onclick="guardarproducto()"> guardar producto...</button>
+     <div id="mensaje-exito"></div>
+    <script src="../Dummyjson/main.js"></script>
+</body>
+</html>

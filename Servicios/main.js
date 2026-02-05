@@ -15,22 +15,31 @@ const cargarServicios = () => {
     baseDeDatosCloud.forEach(servicio => {
 
         // Reto lógico
-        let claseEstado = "";
+         const claseEstado =
+            servicio.estado === "Activo"
+                ? "text-success fw-bold"
+                : "text-danger fw-bold";
 
-        if (servicio.estado === "Activo") {
-            claseEstado = "activo";
-        } else {
-            claseEstado = "inactivo";
-        }
 
 
         // Crear la tarjeta usando Template Strings
         const tarjetaHTML = `
-            <div class="card">
-                <h3>${servicio.nombre}</h3>
-                <p class="tipo">Tipo: ${servicio.tipo}</p>
-                <p>Estado: <span class="${claseEstado}">${servicio.estado}</span></p>
-                <p>Costo mensual: $${servicio.costo.toFixed(2)}</p>
+            <div class="col-md-3">
+                <div class="card h-100 shadow">
+                    <div class="card-body text-dark">
+                        <h5 class="card-title">${servicio.nombre}</h5>
+                        <p class="card-text"><strong>Tipo:</strong> ${servicio.tipo}</p>
+                        <p class="card-text">
+                            <strong>Estado:</strong>
+                            <span class="${claseEstado}">
+                                ${servicio.estado}
+                            </span>
+                        </p>
+                        <p class="card-text">
+                            <strong>Costo mensual:</strong> $${servicio.costo.toFixed(2)}
+                        </p>
+                    </div>
+                </div>
             </div>
         `;
 

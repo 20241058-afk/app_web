@@ -31,8 +31,16 @@ const mostrar=()=>{
 
     coleccion_docentes.forEach((docente)=>{
         if(docente.estado==true){
-            contenedor.innerHTML+="<div class='tarjeta'>"+
-            "<h2>"+docente.nombre+"</h2>"+"</div>"
+            contenedor.innerHTML+= `
+                <div class="col-md-4 mb-3">
+                    <div class="card text-dark h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">${docente.nombre} ${docente.apellidos}</h2>
+                            
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
     })
