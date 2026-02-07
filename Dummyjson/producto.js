@@ -42,8 +42,16 @@ const mostrarProducto = (producto) => {
                 <p><strong>Stock:</strong> ${producto.stock}</p>
 
                 <!-- Botón para regresar -->
-                <button onclick="history.back()">⬅ Volver</button>
+                
             </div>
         </section>
     `;
 };
+
+document.getElementById("detalle-container")
+    .addEventListener("click", () => {
+        console.log("Editar producto:", idProducto);
+
+        localStorage.setItem("editarProducto", idProducto);
+        window.location.href = "editar.html";
+    });

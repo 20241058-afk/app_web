@@ -6,37 +6,62 @@
     <title>Document</title>
     <link rel="stylesheet" href="../Dummyjson/style.css">
 </head>
-<body>
-    <h1>Alta de nuevos productos</h1>
+<body class="bg-dark text-info">
+    <body>
+        <header>
+        <h1>Productos</h1>
+    <nav>
+        <a href="../index.html">← Volver al Inicio</a>
+        <a href="add.html">+ Agregar Producto</a>
+    </nav>
+    </header>  
 
-    <div class="form-group">
-        <label>Nombre del producto:</label>
-        <input type="text" id="titulo" placeholder="Nombre del prodyucto...">
-        
-    </div class="form-group">
-    <div>
-        <label>Precio :</label>
-        <input type="text" id="precio" placeholder="$">
+    <div class="contenedor-formulario">
+        <div class="card-formulario">
+            <h1>Alta de nuevos productos</h1>
+
+            <div class="form-group">
+                <label>Nombre del producto</label>
+                <input type="text" id="titulo" placeholder="Nombre del producto">
+            </div>
+
+            <div class="form-group">
+                <label>Precio</label>
+                <input type="number" id="precio" placeholder="$">
+            </div>
+
+            <div class="form-group">
+                <label>Categoría</label>
+                <select id="categoria">
+                    <option value="smartphone">Smartphone</option>
+                    <option value="laptops">Laptops</option>
+                    <option value="fraganses">Fragances</option>
+                    <option value="skincare">Skincare</option>
+                    <option value="groceries">Groceries</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Descripción</label>
+                <textarea id="descripcion" rows="4" placeholder="Descripción del producto"></textarea>
+            </div>
+
+            <div class="acciones">
+                <button class="btn-secundario" onclick="window.location.href='../'">
+                    Volver
+                </button>
+
+                <button class="btn-primario" onclick="guardarproducto()">
+                    Guardar producto
+                </button>
+            </div>
+
+            <div id="mensaje-exito"></div>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Categoría:</label>
-        <!--hacer dinamico el select-->
-        <select id="categoria">
-            <option value="smartphone">smartphone</option>
-            <option value="laptops">laptops</option>
-            <option value="fraganses">fraganses</option>
-            <option value="skincare">skincare</option>
-            <option value="groceries">groceries</option>
-        </select>
-    </div>
-    
-    <div class="form-group">
-        <label>descripcion:</label>
-       <textarea name="descripcion" rows="4" id="descripcion" placeholder="descripcion del producto"></textarea>
-    </div>
-    <button class="btn-back" onclick="window.location.href='../'">come back</button>
-    <button class="btn-back" onclick="guardarproducto()"> guardar producto...</button>
-     <div id="mensaje-exito"></div>
+
     <script src="../Dummyjson/main.js"></script>
+</body>
+
 </body>
 </html>

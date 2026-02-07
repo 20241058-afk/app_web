@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Producto</title>
+    <link rel="stylesheet" href="../Dummyjson/style.css">
+</head>
+
+<body class="bg-dark text-info">
+
+<header>
+    <h1>Productos</h1>
+</header>
+
+<div class="contenedor-formulario">
+    <div class="card-formulario">
+        <h1>Editar producto</h1>
+
+        <div class="form-group">
+            <label>Nombre del producto</label>
+            <input type="text" id="titulo" placeholder="Nombre del producto">
+        </div>
+
+        <div class="form-group">
+            <label>Precio</label>
+            <input type="number" id="precio" placeholder="$">
+        </div>
+
+        <div class="form-group">
+            <label>Categoría</label>
+            <select id="categoria">
+                <option value="smartphones">Smartphones</option>
+                <option value="laptops">Laptops</option>
+                <option value="fragrances">Fragancias</option>
+                <option value="skincare">Cuidado de piel</option>
+                <option value="groceries">Comestibles</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Descripción</label>
+            <textarea id="descripcion" rows="4" placeholder="Descripción del producto"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>URL de la imagen (opcional)</label>
+            <input type="text" id="imagen" placeholder="https://...">
+        </div>
+
+        <div class="acciones">
+            <button class="btn-secundario" onclick="window.history.back()">
+                Volver
+            </button>
+
+            <button class="btn-primario" onclick="editarProducto()">
+                Guardar cambios
+            </button>
+        </div>
+
+        <div id="mensaje-exito"></div>
+    </div>
+</div>
+
+<script src="editar.js"></script>
+
+</body>
+</html>
