@@ -1,0 +1,363 @@
+:root {
+    --primary-color: #6366f1; /* Indigo moderno */
+    --primary-hover: #4f46e5;
+    --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    --text-main: #1e293b;
+    --card-bg: #ffffff;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    margin: 0;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+nav {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: color 0.3s;
+    margin: 0 15px;
+}
+button{
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: color 0.3s;
+    margin: 0 15px;
+}
+.tarjeta-producto{
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 20px;
+    text-decoration: none;
+    color: inherit;
+
+    width: 20%;              /* 👈 permite 4 tarjetas por fila */
+    min-width: 230px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tarjeta-producto:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #2a2a2a;
+    transform: translate(-5px);
+}
+.tarjeta-producto .title{
+    color: #e67e22;
+}
+
+
+#contenedor-productos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+.tarjeta-producto imag{
+    width: 100%;
+    height: 10px;
+    object-fit: contain;
+}
+/* Botón ver detalle */
+.btn-detalle {
+    margin-top: 10px;
+    align-self: flex-start; /* lo alinea bien dentro de la tarjeta */
+
+    background-color: #2d936c; /* verde que ya usas */
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: background-color 0.3s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+/* Hover */
+.btn-detalle:hover {
+    background-color: #1e6f50; /* un poco mas oscuro */
+    transform: translateY(-2px); /* sube tantito */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Click */
+.btn-detalle:active {
+    transform: scale(0.95);
+}
+
+
+/* ===== VISTA DE PRODUCTO A PANTALLA COMPLETA ===== */
+
+.producto-completo {
+    display: flex;
+    gap: 40px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.producto-completo .imagen {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.producto-completo .imagen img {
+    max-width: 100%;
+    max-height: 450px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.producto-completo .info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.producto-completo .info h1 {
+    text-align: left;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.producto-completo .descripcion {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #475569;
+}
+
+.producto-completo .precio {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.producto-completo .datos p {
+    margin: 6px 0;
+    font-size: 1rem;
+}
+
+.producto-completo button {
+    margin-top: auto;
+    align-self: flex-start;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.producto-completo button:hover {
+    background-color: var(--primary-hover);
+}
+
+
+/* ===== BARRA DE BÚSQUEDA MODERNA ===== */
+.barra_busqueda {
+    max-width: 520px;
+    margin: 0 auto 40px auto;
+    display: flex;
+    align-items: center;
+    background-color: var(--card-bg);
+    border-radius: 50px;
+    padding: 6px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.barra_busqueda:focus-within {
+    border-color: var(--primary-color);
+    box-shadow: 0 12px 30px rgba(99, 102, 241, 0.25);
+}
+
+/* Input */
+.barra_busqueda input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 14px 18px;
+    font-size: 1rem;
+    border-radius: 50px;
+    background: transparent;
+    color: var(--text-main);
+}
+
+.barra_busqueda input::placeholder {
+    color: #94a3b8;
+}
+
+/* Botón */
+.boton_buscar {
+    width: auto;
+    height: 46px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: backgroun 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.boton_buscar:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+.boton_buscar:active {
+    transform: scale(0.95);
+}
+
+
+
+
+
+
+
+/* ===== FORMULARIO CENTRADO ===== */
+
+.contenedor-formulario {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-formulario {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 450px;
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.card-formulario h1 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+/* ===== CAMPOS ===== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+}
+
+/* ===== BOTONES ===== */
+
+.acciones {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.btn-primario {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-primario:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.btn-secundario {
+    background-color: #e5e7eb;
+    color: #1f2933;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-secundario:hover {
+    background-color: #d1d5db;
+}
+
+/* ===== MENSAJE DE ÉXITO ===== */
+
+#mensaje-exito {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    display: none;
+    background-color: #ecfdf5;
+    border: 1px solid #34d399;
+    color: #065f46;
+}

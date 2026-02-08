@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../ShopMaster/style.css">
+</head>
+<body onload="cargarProductos()">
+    <header>
+        <h1>Productos</h1>
+    <nav>
+        <a href="../index.html">← Volver al Inicio</a>
+        <a href="add.html">+ Agregar Producto</a>
+    </nav>
+    </header>
+    
+    <form  class="barra_busqueda" >
+        <input type="text" id="producto-buscado" name="q" placeholder="Buscar...">
+        <button type="submit" class="boton_buscar"><i class="fa-solid fa-magnifying-glass"></i>Buscar</button>
+    </form>
+    <main>
+        <div id="contenedor-productos" class="grid"></div>
+    </main>
+
+    <script src="dashboart.js"></script>
+</body>
+</html>

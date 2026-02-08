@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../Dummyjson/style.css">
+</head>
+<body class="bg-dark text-info">
+    <body>
+        <header>
+        <h1>Productos</h1>
+    <nav>
+        <a href="../index.html">← Volver al Inicio</a>
+        <a href="add.html">+ Agregar Producto</a>
+    </nav>
+    </header>  
+
+    <div class="contenedor-formulario">
+        <div class="card-formulario">
+            <h1>Alta de nuevos productos</h1>
+
+            <div class="form-group">
+                <label>Nombre del producto</label>
+                <input type="text" id="titulo" placeholder="Nombre del producto">
+            </div>
+
+            <div class="form-group">
+                <label>Precio</label>
+                <input type="number" id="precio" placeholder="$">
+            </div>
+
+            <div class="form-group">
+                <label>Categoría</label>
+                <select id="categoria">
+                    <option value="smartphone">Smartphone</option>
+                    <option value="laptops">Laptops</option>
+                    <option value="fraganses">Fragances</option>
+                    <option value="skincare">Skincare</option>
+                    <option value="groceries">Groceries</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Descripción</label>
+                <textarea id="descripcion" rows="4" placeholder="Descripción del producto"></textarea>
+            </div>
+
+            <div class="acciones">
+                <button class="btn-secundario" onclick="window.location.href='../ShopMaster/index.html'">
+                    Volver
+                </button>
+
+                <button class="btn-primario" onclick="guardarproducto()">
+                    Guardar producto
+                </button>
+            </div>
+
+            <div id="mensaje-exito"></div>
+        </div>
+    </div>
+
+    <script src="dashboart.js"></script>
+</body>
+
+</body>
+</html>
