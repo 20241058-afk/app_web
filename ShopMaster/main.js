@@ -1,69 +1,126 @@
-const urlAPi="https://dummyjson.com/products?limit=32"
-const cargarProductos=()=>{
-    fetch(urlAPi)
-        .then(respuesta=>respuesta.json())
-        .then(datos=>{
-            const productos=datos.products;
+let offset = 0;
+const pageSize = 10;
 
-            console.log("Datos recibidos:", datos);
+const categorySelect = document.getElementById("category-select");
+const sortSelect = document.getElementById("sort-select");
+const tableBody = document.getElementById("table-body");
+const pageLabel = document.getElementById("page-display");
 
-            mostrarProductos(productos);
-        })
-        .catch(error => {
-            console.error("Error al cargar los productos:", error);
-            alert("Hubo un error al cargar los datos. Revisa la consola.");
-        })
-}
-const mostrarProductos=(productos)=>{
-    const contenedor=document.getElementById("contenedor-productos");
-    contenedor.innerHTML="";
-    
-    productos.forEach(producto => {
-        const tarjeta=document.createElement("div");
-        tarjeta.className="tarjeta-producto";
-        tarjeta.innerHTML=`
-            <h3 class="title">${producto.title}</h3>
-            <img src="${producto.thumbnail}" alt="${producto.title}">
-            <p><strong>Precio: </strong> $${producto.price}</p>
-            <p><strong>Rating: </strong>     ${producto.rating}</p>
-            <p><strong>Categoria: </strong> ${producto.category}</p>
-            <button class="btn-detalle">Detalles</button>
-        `;
-        
-
-        tarjeta.querySelector(".btn-detalle")
-                .addEventListener("click", () => {
-                    
-                // Guardamos el ID del producto en localStorage
-                localStorage.setItem("productoId", producto.id);
-
-                // Redirigimos a la página de detalle SIN mostrar el ID en la URL
-                window.location.href = "../ShopMaster/producto.html";
-                });
-
-            contenedor.appendChild(tarjeta);
+// Cargar categorías
+fetch("https://dummyjson.com/products/category-list")
+    .then(res => res.json())
+    .then(categories => {
+        categories.forEach(category => {
+            const option = document.createElement("option");
+            option.value = category;
+            option.textContent = category;
+            categorySelect.appendChild(option);
         });
+    });
 
-}
+// Obtener productos
+const loadProducts = () => {
+    const searchText = document.getElementById("search-input").value;
+    const sortOption = sortSelect.value;
+    const selectedCategory = categorySelect.value;
 
-const buscarProducto = () => {
+    let apiUrl = "https://dummyjson.com/products";
 
-    const productoBuscado = document.getElementById("producto-buscado").value;
-    fetch(`https://dummyjson.com/products/search?q=${productoBuscado}`)
+    if (searchText) {
+        apiUrl += `/search?q=${searchText}&`;
+    } else if (selectedCategory) {
+        apiUrl += `/category/${selectedCategory}?`;
+    } else {
+        apiUrl += "?";
+    }
+
+    apiUrl += `limit=${pageSize}&skip=${offset}`;
+
+    if (sortOption) {
+        const [field, order] = sortOption.split("-");
+        apiUrl += `&sortBy=${field}&order=${order}`;
+    }
+
+    fetch(apiUrl)
         .then(res => res.json())
         .then(data => {
-            console.log("Resultados de búsqueda:", data);
-            mostrarProductos(data.products);
+            renderProductsTable(data.products);
+            pageLabel.textContent = `Página ${(offset / pageSize) + 1}`;
+            updatePagination(data.total);
         });
-       
-}
-// Este bloque controla el envío del formulario
-const Busqueda = document.querySelector(".barra_busqueda");
+};
 
-Busqueda.addEventListener("submit", (event) => {
-    // Evita que la página se refresque y aparezca el color azul
-    event.preventDefault(); 
-    
-    // Ejecuta tu función de búsqueda
-    buscarProducto(); 
+// Renderizar tabla
+const renderProductsTable = products => {
+    tableBody.innerHTML = "";
+
+    products.forEach(product => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${product.id}</td>
+            <td><img src="${product.thumbnail}" class="product-img"></td>
+            <td>${product.title}</td>
+            <td><span class="badge">${product.category}</span></td>
+            <td>$${product.price}</td>
+            <td>
+                <button class="btn btn-edit" onclick="editProduct(${product.id}, this)">Editar</button>
+                <button class="btn btn-delete" onclick="deleteProduct(${product.id}, this)">Eliminar</button>
+            </td>
+        `;
+        tableBody.appendChild(row);
+    });
+};
+
+// Editar
+const editProduct = (id, button) => {
+    const newTitle = prompt("Nuevo nombre:");
+    const newPrice = prompt("Nuevo precio:");
+
+    if (!newTitle || !newPrice) return;
+
+    fetch(`https://dummyjson.com/products/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title: newTitle, price: newPrice })
+    })
+    .then(res => res.json())
+    .then(data => {
+        const row = button.closest("tr");
+        row.children[2].textContent = data.title;
+        row.children[4].textContent = `$${data.price}`;
+    });
+};
+
+// Eliminar
+const deleteProduct = (id, button) => {
+    fetch(`https://dummyjson.com/products/${id}`, { method: "DELETE" })
+        .then(() => button.closest("tr").remove());
+};
+
+// Paginación
+const updatePagination = total => {
+    document.getElementById("next-btn").disabled = offset + pageSize >= total;
+    document.getElementById("prev-btn").disabled = offset === 0;
+};
+
+// Eventos
+document.getElementById("search-form").addEventListener("submit", e => {
+    e.preventDefault();
+    offset = 0;
+    loadProducts();
 });
+
+document.getElementById("next-btn").onclick = () => {
+    offset += pageSize;
+    loadProducts();
+};
+
+document.getElementById("prev-btn").onclick = () => {
+    offset -= pageSize;
+    loadProducts();
+};
+
+sortSelect.onchange = () => { offset = 0; loadProducts(); };
+categorySelect.onchange = () => { offset = 0; loadProducts(); };
+
+loadProducts();

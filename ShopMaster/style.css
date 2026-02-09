@@ -1,18 +1,27 @@
+/* ================================
+   VARIABLES DE COLOR (TUS COLORES)
+================================ */
 :root {
-    --primary-color: #6366f1; /* Indigo moderno */
+    --primary-color: #6366f1;      /* Indigo moderno */
     --primary-hover: #4f46e5;
     --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     --text-main: #1e293b;
+    --text-muted: #64748b;
     --card-bg: #ffffff;
+    --border: #e2e8f0;
+    --danger: #ef4444;
+    --warning: #f59e0b;
 }
 
+/* ================================
+   BODY & LAYOUT
+================================ */
 body {
-    font-family: 'Inter', sans-serif;
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
     background: var(--bg-gradient);
     color: var(--text-main);
-    margin: 0;
     min-height: 100vh;
-    padding: 40px 20px;
 }
 
 h1 {
@@ -33,85 +42,185 @@ nav a {
     color: var(--primary-color);
     font-weight: 600;
     transition: color 0.3s;
-    margin: 0 15px;
 }
-button{
-    text-decoration: none;
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 70px 1fr;
+    height: 100vh;
+}
+
+/* ================================
+   SIDEBAR
+================================ */
+.sidebar {
+    grid-row: 1 / 3;
+    background: var(--card-bg);
+    border-right: 1px solid var(--border);
+    padding: 2rem 1.5rem;
+}
+
+.sidebar h2 {
     color: var(--primary-color);
-    font-weight: 600;
-    transition: color 0.3s;
-    margin: 0 15px;
-}
-.tarjeta-producto{
-    background-color: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    padding: 20px;
-    text-decoration: none;
-    color: inherit;
-
-    width: 20%;              /* 👈 permite 4 tarjetas por fila */
-    min-width: 230px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    font-weight: 700;
+    margin-bottom: 2rem;
 }
 
-.tarjeta-producto:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-color: #2a2a2a;
-    transform: translate(-5px);
-}
-.tarjeta-producto .title{
-    color: #e67e22;
+.filter-group {
+    margin-bottom: 1.5rem;
 }
 
-
-#contenedor-productos{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
+.filter-group label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
 }
-.tarjeta-producto imag{
+
+.sidebar select {
     width: 100%;
-    height: 10px;
-    object-fit: contain;
-}
-/* Botón ver detalle */
-.btn-detalle {
-    margin-top: 10px;
-    align-self: flex-start; /* lo alinea bien dentro de la tarjeta */
-
-    background-color: #2d936c; /* verde que ya usas */
-    color: #ffffff;
-    border: none;
-    padding: 10px 18px;
+    padding: 0.6rem;
     border-radius: 8px;
+    border: 1px solid var(--border);
+    background: #f8fafc;
+}
 
-    font-size: 0.9rem;
+/* ================================
+   TOP BAR
+================================ */
+.top-bar {
+    grid-column: 2 / 3;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-box {
+    display: flex;
+    gap: 0.5rem;
+    width: 40%;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    outline: none;
+}
+
+/* ================================
+   MAIN CONTENT
+================================ */
+.main-content {
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+/* ================================
+   TABLE
+================================ */
+.table-container {
+    background: var(--card-bg);
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #f1f5f9;
+    padding: 1rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.product-img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* ================================
+   BADGE
+================================ */
+.badge {
+    background: #eef2ff;
+    color: var(--primary-color);
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
     font-weight: 600;
+}
+
+/* ================================
+   BUTTONS
+================================ */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: none;
     cursor: pointer;
-
-    transition: background-color 0.3s ease,
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
+    font-weight: 600;
+    transition: all 0.25s ease;
 }
 
-/* Hover */
-.btn-detalle:hover {
-    background-color: #1e6f50; /* un poco mas oscuro */
-    transform: translateY(-2px); /* sube tantito */
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
 }
 
-/* Click */
-.btn-detalle:active {
-    transform: scale(0.95);
+.btn-primary:hover {
+    background: var(--primary-hover);
 }
 
+.btn-edit {
+    background: var(--warning);
+    color: white;
+    margin-right: 6px;
+}
+
+.btn-delete {
+    background: var(--danger);
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+}
+
+/* ================================
+   PAGINATION
+================================ */
+.pagination {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.page-info {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
 
 /* ===== VISTA DE PRODUCTO A PANTALLA COMPLETA ===== */
 
