@@ -21,7 +21,6 @@ function cargarPiloto() {
                 <p><strong>Fecha de nacimiento:</strong> ${piloto.birthday ?? "N/A"}</p>
                 <p><strong>Número:</strong> ${piloto.number ?? "N/A"}</p>
                 <p><strong>Escudería:</strong> ${piloto.teamId ?? "N/A"}</p>
-                <a href="drivers.html">⬅ Volver</a>
             </div>
         </section>
     `;
