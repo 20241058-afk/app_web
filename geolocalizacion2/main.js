@@ -9,8 +9,8 @@ if(navigator.geolocation){
 
             const coordenadas=[lat,lon]
 
-            //let map = L.map('map').setView(coordenadas, 19);
-            let map = L.map('map').setView([lat, lon], 19);
+            let map = L.map('map').setView(coordenadas, 19);
+            //let map = L.map('map').setView([lat, lon], 19);
 
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 22,
