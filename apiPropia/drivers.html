@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pilotos F1 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/e29917e42a.js" crossorigin="anonymous"></script>
+</head>
+
+<body onload="cargarPilotos()">
+
+<header>
+    <h1>Pilotos Fórmula 1 · 2026</h1>
+    <nav>
+        <a href="../index.html">← Volver</a>
+    </nav>
+</header>
+<select id="cmbYear">
+    <option value="2026">2026</option>
+    <option value="2025">2025</option>
+    <option value="2024">2024</option>
+</select>
+
+<form class="barra_busqueda">
+    <input id="piloto-buscado" placeholder="Buscar piloto">
+    <button class="boton_buscar">🔍</button>
+</form>
+
+<div id="contenedor-productos"></div>
+
+<script src="drivers.js"></script>
+</body>
+</html>

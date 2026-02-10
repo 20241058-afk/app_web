@@ -29,7 +29,7 @@ if(navigator.geolocation){
             ]).addTo(map);
 
             polygon.bindPopup("pertimetro de mi casa exacto").openPopup();
-            //alert(lat+" , "+lon)
+            alert(lat+" , "+lon)
         },
         ()=>{}
 
