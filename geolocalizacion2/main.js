@@ -10,14 +10,14 @@ if(navigator.geolocation){
             const coordenadas=[lat,lon]
 
             //let map = L.map('map').setView(coordenadas, 19);
-            let map = L.map('map').setView([21.171340, -98.432121], 19);
+            let map = L.map('map').setView([lat, lon], 19);
 
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 22,
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
 
-            let marcador = L.marker([21.171340, -98.432121]).addTo(map);
+            let marcador = L.marker([lat, lon]).addTo(map);
             marcador.bindPopup('<b>esta es es la ubicacion de mi casa.....</b><br>Mis corrdenadas son : <br>latitud : '+lat+'<br>longitud : '+lon).openPopup()
 
             var polygon = L.polygon([
