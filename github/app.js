@@ -31,9 +31,9 @@ const cargarRepos = async () => {
             <h3>${repo.name}</h3>
             <p>${repo.description || 'Sin descripción disponible'}</p>
             <div class="stats">
-                <span>⭐ ${repo.stargazers_count}</span>
-                <span>🍴 ${repo.forks_count}</span>
-            </div>
+                <span>⭐ ${repo.stargazers_count}</span>` +
+                //`<span>🍴 ${repo.forks_count}</span>`+
+            `</div>
             <a href="${repo.html_url}" target="_blank">Ver Proyecto</a>
         </article>
     `).join('');
