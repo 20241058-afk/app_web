@@ -7,6 +7,16 @@ const inputBuscar = document.getElementById("piloto-buscado");
 let pilotosGlobal = [];
 let yearActual = cmbYear.value || 2026;
 
+// Generar años de 2026 a 2000
+cmbYear.innerHTML = ''; // Limpiar opciones actuales
+
+for (let year = 2026; year >= 2000; year--) {
+    const option = document.createElement('option');
+    option.value = year;
+    option.textContent = year;
+    cmbYear.appendChild(option);
+}
+
 // Obtener pilotos por año
 const obtenerPilotosPorYear = year => {
     fetch(`https://f1api.dev/api/${year}/drivers`)

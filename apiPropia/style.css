@@ -185,7 +185,7 @@ nav a {
 #cmbYear {
     display: block;
     margin: 20px auto 30px auto;
-    padding: 12px 20px;
+    padding: 12px 30px;
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-main);
