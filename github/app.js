@@ -8,10 +8,14 @@ const cargarPerfil = async () => {
     
     //actualizamos el contenido del perfil
     document.getElementById('profile-card').innerHTML = `
+        <nav>
+            <a href="../index.html">← Volver al Inicio</a>
+        </nav>
         <img src="${data.avatar_url}" class="avatar-profile" alt="Avatar">
         <h1>${data.name || user}</h1>
          <p>${data.bio || 'Software Developer'}</p>
         <span> ${data.location || 'Remote'}</span>
+        
     `
 };
 //caragr repositorios
