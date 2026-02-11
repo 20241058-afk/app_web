@@ -62,9 +62,10 @@ const mostrarPilotos = pilotos => {
 
         // Evento para ver detalle
        card.querySelector(".btn-detalle").addEventListener("click", () => {
-            localStorage.setItem("pilotoSeleccionado", JSON.stringify(p));
-            window.location.href = "driver.html";
+            window.location.href = `driver.html?id=${p.driverId}`;
         });
+
+
 
         contenedor.appendChild(card);
     });
