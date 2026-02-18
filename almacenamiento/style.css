@@ -1,0 +1,34 @@
+body {
+    background: #eef2f3;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+#imagen {
+    margin-top: 20px;
+    max-width: 100%;
+    display: block;
+}
+
+.hidden { display: none; }
+
+#loading {
+    color: #6366f1;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
